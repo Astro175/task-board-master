@@ -21,7 +21,7 @@ export const getBoardById = async (id: number) => {
   }
 };
 
-export const create = async (data: Omit<Board, "id">) => {
+export const createBoard = async (data: Omit<Board, "id">) => {
   try {
     const board = await prisma.board.create({
       data,
@@ -32,7 +32,7 @@ export const create = async (data: Omit<Board, "id">) => {
     throw new Error("Could not create board");
   }
 };
-export const update = async (id: number, data: Omit<Board, "id">) => {
+export const updateBoard = async (id: number, data: Partial<Board>) => {
   try {
     const board = await prisma.board.update({
       where: {

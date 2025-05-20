@@ -3,7 +3,7 @@ import { Task } from "@/types/task";
 
 export const create = async (data: Omit<Task, "id">) => {
   try {
-    const task = await prisma.task.create({
+    const task: Task = await prisma.task.create({
       data,
     });
     return task;
