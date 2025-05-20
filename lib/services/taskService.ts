@@ -1,7 +1,24 @@
 import prisma from "../prismaClient";
 import { Task } from "@/types/task";
 
-export const create = async (data: Omit<Task, "id">) => {
+
+export const getTaskById = async(id: number) =>{
+    try {
+        const task: Task = await prisma.task.get({
+            where: {id}
+        })
+        if (!task) {
+            throw new Error("Task not found")
+        }
+        return task
+    } catch(error) {
+        console.error("Error fetching task:", error)
+        throw new Error("Could fetch given task")
+    }
+
+}
+
+export const createTask = async (data: Omit<Task, "id">) => {
   try {
     const task: Task = await prisma.task.create({
       data,
@@ -13,7 +30,7 @@ export const create = async (data: Omit<Task, "id">) => {
   }
 };
 
-export const update = async (id: number, data: Partial<Task>) => {
+export const updateTask = async (id: number, data: Partial<Task>) => {
   try {
     const task = await prisma.task.update({
       where: { id },

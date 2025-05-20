@@ -30,7 +30,7 @@ export type Task = $Result.DefaultSelection<Prisma.$TaskPayload>
 export namespace $Enums {
   export const Status: {
   IN_PROGRESS: 'IN_PROGRESS',
-  PENDING: 'PENDING',
+  WONT_DO: 'WONT_DO',
   COMPLETED: 'COMPLETED'
 };
 

@@ -1,11 +1,11 @@
 import { z } from "zod";
 
 
-export enum Status {
-  IN_PROGRESS,
-  PENDING,
-  COMPLETED,
-}
+enum Status {
+    IN_PROGRESS,
+    WONT_DO,
+    COMPLETED,
+  }
 
 
 export const taskSchema = z.object({

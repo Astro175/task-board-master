@@ -28,7 +28,7 @@ export async function GET({ params }: { params: { id: string } }) {
   return NextResponse.json(board.id, { status: 200 });
 }
 
-export async function PUT(
+export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -36,7 +36,7 @@ export async function PUT(
   const boardId = Number(id);
 
   if (!id || isNaN(boardId)) {
-    return NextResponse.json({ message: "Invalid board ID" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid board ID" }, { status: 400 });
   }
   const body = await request.json();
   const result = partialBoardUpdateSchema.safeParse(body);

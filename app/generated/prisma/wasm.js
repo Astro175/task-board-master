@@ -147,7 +147,7 @@ exports.Prisma.QueryMode = {
 };
 exports.Status = exports.$Enums.Status = {
   IN_PROGRESS: 'IN_PROGRESS',
-  PENDING: 'PENDING',
+  WONT_DO: 'WONT_DO',
   COMPLETED: 'COMPLETED'
 };
 
