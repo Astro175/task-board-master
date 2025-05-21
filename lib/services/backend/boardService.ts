@@ -1,4 +1,4 @@
-import prisma from "../prismaClient";
+import prisma from "../../prismaClient";
 import { Board } from "@/types/board";
 
 export const getBoardById = async (id: number) => {

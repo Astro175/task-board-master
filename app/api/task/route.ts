@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { taskSchema } from "@/types/schemas/taskSchema";
-import { createTask } from "@/lib/services/taskService";
+import { createTask } from "@/lib/services/backend/taskService";
 
 export async function POST(request: NextRequest) {
   const body = request.json();

@@ -3,7 +3,7 @@ import {
   deleteBoard,
   getBoardById,
   updateBoard,
-} from "@/lib/services/boardService";
+} from "@/lib/services/backend/boardService";
 import { boardSchema } from "@/types/schemas/boardSchema";
 import { Board } from "@/types/board";
 
@@ -25,7 +25,7 @@ export async function GET({ params }: { params: { id: string } }) {
   if (!board) {
     return NextResponse.json({ message: "Board not found" }, { status: 404 });
   }
-  return NextResponse.json(board.id, { status: 200 });
+  return NextResponse.json(board, { status: 200 });
 }
 
 export async function PATCH(
@@ -53,7 +53,7 @@ export async function PATCH(
   }
   const updateData = result.data;
   const board = await updateBoard(boardId, updateData);
-  return NextResponse.json(board.id, { status: 200 });
+  return NextResponse.json(board, { status: 200 });
 }
 
 export async function DELETE({ params }: { params: { id: string } }) {

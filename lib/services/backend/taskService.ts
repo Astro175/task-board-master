@@ -1,22 +1,20 @@
-import prisma from "../prismaClient";
+import prisma from "../../prismaClient";
 import { Task } from "@/types/task";
 
-
-export const getTaskById = async(id: number) =>{
-    try {
-        const task: Task = await prisma.task.get({
-            where: {id}
-        })
-        if (!task) {
-            throw new Error("Task not found")
-        }
-        return task
-    } catch(error) {
-        console.error("Error fetching task:", error)
-        throw new Error("Could fetch given task")
+export const getTaskById = async (id: number) => {
+  try {
+    const task: Task = await prisma.task.get({
+      where: { id },
+    });
+    if (!task) {
+      throw new Error("Task not found");
     }
-
-}
+    return task;
+  } catch (error) {
+    console.error("Error fetching task:", error);
+    throw new Error("Could fetch given task");
+  }
+};
 
 export const createTask = async (data: Omit<Task, "id">) => {
   try {

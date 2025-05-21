@@ -4,13 +4,13 @@ import {
   deleteTask,
   getTaskById,
   updateTask,
-} from "@/lib/services/taskService";
+} from "@/lib/services/backend/taskService";
 
 export const taskPatchSchema = taskSchema
   .omit({ id: true, boardId: true })
   .partial();
 
-export async function PUT(
+export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
@@ -36,7 +36,7 @@ export async function PUT(
   }
   const updateData = result.data;
   const task = await updateTask(taskId, updateData);
-  return NextResponse.json(task.id, { status: 200 });
+  return NextResponse.json(task, { status: 200 });
 }
 
 export async function DELETE({ params }: { params: { id: string } }) {

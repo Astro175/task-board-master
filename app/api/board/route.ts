@@ -1,5 +1,5 @@
 import { boardSchema } from "@/types/schemas/boardSchema";
-import { createBoard } from "@/lib/services/boardService";
+import { createBoard } from "@/lib/services/backend/boardService";
 
 import { NextResponse, NextRequest } from "next/server";
 
@@ -19,5 +19,3 @@ export async function POST(request: NextRequest) {
   const data = await createBoard(board);
   return NextResponse.json(data.id, { status: 200 });
 }
-
-
