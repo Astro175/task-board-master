@@ -13,19 +13,16 @@ export default function useCreateBoard() {
 
       const previousBoards = queryClient.getQueryData<Board[]>(["boards"]);
 
-      const tempId = Date.now(); // Temporary optimistic ID
+      const tempId = Date.now(); 
       const optimisticBoard: Board = { id: tempId, ...newBoardData };
 
-      // Optimistically update the boards list
+
       queryClient.setQueryData<Board[]>(["boards"], (old) => [
         ...(old || []),
         optimisticBoard,
       ]);
-
-      // Optimistically set the single board query too
       queryClient.setQueryData<Board>(["board", tempId], optimisticBoard);
 
-      // Return rollback context
       return {
         previousBoards,
         tempId,

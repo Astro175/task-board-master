@@ -2,7 +2,7 @@ import { Task } from "@/types/task";
 import axios from "axios";
 
 export const taskService = {
-  async create(data: Task): Promise<Task> {
+  async create(data: Omit<Task, "id">): Promise<Task> {
     try {
       const response = await axios.post(`/api/task/`, data);
       return response.data;
